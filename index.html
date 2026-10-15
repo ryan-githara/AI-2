@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .pricing {
+    width: 320px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* FIXED: box-shdow -> box-shadow */
+    padding: 30px;
+    text-align: center; /* FIXED: left -> center */
+    border-radius: 16px;
+    transition: transform 0.3s;
+  }
+  .pricing:hover { transform: translateY(-5px); }
+  .title { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+  .price { font-size: 28px; color: #22c55e; font-weight: bold; margin-bottom: 20px; }
+  .features { list-style: none; padding-left: 0; margin-bottom: 20px; }
+  .features li { padding: 10px; border-bottom: 1px solid #eee; }
+  .btn {
+    background: #2563eb;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .btn:hover { background: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+  // REUSABLE COMPONENT: Card(title, price, features)
+  function Card(title, price, features) {
+    return `
+      <div class="pricing">
+        <h2 class="title">${title}</h2> <!-- FIXED: was <h2> not </h2> -->
+        <p class="price">${price}</p>
+        <ul class="features">
+          ${features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+        <button class="btn" onclick="alert('Started ${title}')">Start Trial</button>
+      </div>
+    `;
+  }
+
+  // Test it with 3 different cards using same component
+  document.getElementById('app').innerHTML = `
+    <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+      ${Card("Basic Plan", "$9.99 /month", ["1 GB Storage", "Basic Support", "All Core Features"])}
+      ${Card("Pro Plan", "$19.99 /month", ["10 GB Storage", "Priority Support", "All Pro Features"])}
+      ${Card("Enterprise", "$49.99 /month", ["Unlimited Storage", "24/7 Support", "Custom Features"])}
+    </div>
+  `;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+Find and fix all HTML/CSS bugs in this pricing card snippet. 
+Bugs include typo in box-shadow and unclosed h2 tag.
+Then refactor it into a reusable JS function Card(title, price, features) that can render multiple pricing cards and make it responsive and modern.
